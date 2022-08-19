@@ -1,0 +1,6 @@
+# General (System Extensions)
+.DS_Store
+
+# Python
+__pycache__/
+environment/
