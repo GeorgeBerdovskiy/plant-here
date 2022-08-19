@@ -1,13 +1,13 @@
 from flask import Flask, render_template, request
 app = Flask(__name__)
 
-from classes import RainBarrel
+from barrel import Functions
 
-@app.route("/", methods=["POST"])
+@app.route("/", methods=["GET", "POST"])
 def home():
   if (request.method == "POST"):
-    rainfall = 0.05
-    return render_template('index.html', ranfall=rainfall)
+    rainfall = Functions.collect_from_bucket("2022", "08", "19", -5, -30)
+    return render_template('index.html', rainfall=rainfall)
   else:
     return render_template('index.html')
   
