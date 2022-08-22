@@ -24,3 +24,7 @@ You'll need Python version 3.6 or above (newest version preferable). You'll also
 2. Create a new directory called "africa-rainfall" within the repository
 3. Open `DataCollectionForFullYear.ipynb` using Jupyter Notebook in your web browser
 4. Run all cells to collect the rainfall data from the AWS S3 bucket [here](https://aws.amazon.com/marketplace/pp/prodview-wwjxc5sort6dw?sr=0-17&ref_=beagle&applicationId=AWSMPContessa#resources)
+
+## Screenshots
+
+![Screenshot](static/Screenshot.png)
