@@ -2,15 +2,46 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Rain Barrel</title>
+    <title>Plant Here!</title>
+
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
-	<h1>Thank You for Visiting Rain Barrel!</h1>
 
-	<form name="Rainfall Request" id="rainfall-request" method="POST">
-		<input type="submit" value="Collect Data">
-	</form> 
+	<nav>
+		<img class="logo" src="{{ url_for('static',filename='Logo.png') }}"/>
+	</nav>
 
-	<p>Rainfall - {{ rainfall }}</p>
+	<div class="padded-content">
+		<h1 style="margin-bottom: 16px;">Looking to Plant Something?</h1>
+		<p style="margin-bottom: 16px;">We can help you determine the best location to plant based on the rainfall your region experiences and the qualities of its soil.<br/><br/>
+
+		Please note that <b>(1)</b> this tool only supports Africa due to performance and data limitations for now, and that <b>(2)</b> results may not be very accurate due to the same performance limitations.</p>
+
+
+		<form name="Rainfall Request" id="rainfall-request" method="POST">
+			<div style="margin-bottom: 16px;">
+				<input type="text" name="latitude" style="margin-bottom: 8px;"><br/>
+				<label>LATITUDE</label>
+			</div>
+
+			<div style="margin-bottom: 16px;">
+				<input type="text" name="longitude" style="margin-bottom: 8px;"><br/>
+				<label>LONGITUDE</label>
+			</div>
+
+			<input type="submit" value="Collect Data">
+		</form> 
+
+		{% if rainfall %}
+			<p style="margin-top: 16px">Total Rainfall - {{ rainfall }} mm</p>
+		{% endif %}
+	</div>
+	
 </body>
+
+<script>
+
+</script>
+
 </html>
