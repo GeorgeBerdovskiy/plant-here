@@ -2,6 +2,7 @@ import netCDF4 as nc
 import boto3 as boto
 import gzip as gzip
 from io import BytesIO
+import pandas as pd
 
 class Functions:
 	def __init__(self):
@@ -45,3 +46,37 @@ class Functions:
 		# Located correct "pixel"
 		measurement = rainfall_array[lat_index][long_index]
 		return measurement
+
+	@staticmethod
+	def determine_rainfall(latitude, longitude):
+		rainfall_total = 0
+
+		year = "2020"
+		months = ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"]
+
+		for month in months:
+			for i in range(1,32):
+				day = str(i)
+
+				if (i < 10):
+					day = "0" + day
+
+				date_file=f"2020{month}{day}"
+				path = f"../africa-rainfall/{date_file}.csv"
+
+				try:
+					temp_dataframe = pd.read_csv(path)
+
+					lat_corrected = 90 - latitude
+					long_corrected = longitude + 180
+
+					lat_index = int(((4800.0 / 180) * lat_corrected - 1333) // 1) 
+					long_index = int(((10020.0 / 360) * long_corrected - 4453) // 1)
+
+					rainfall_total += temp_dataframe.loc[1561][1038]
+					print(path)
+				except:
+					print("File or index doesn't exist, moving on.")
+					continue
+
+		return rainfall_total
