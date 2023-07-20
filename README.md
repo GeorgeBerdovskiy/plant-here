@@ -2,7 +2,7 @@
 
 # Plant Here!
 
-This simple application allows users to determine whether their location would be a good place to plant by collecting rainfall data and soild data for their region. Right now we are using Flask, but we will most likely be using a different framework soon.
+This simple application allows users to determine whether their location would be a good place to plant by collecting rainfall data for their region. Right now we are using Flask, but we may use a different framework soon.
 
 ## Prerequisites
 
